@@ -54,10 +54,10 @@ const StudentList = ({ students, onDelete }) => {
 
 const App = () => {
   const initialStudents = [
-    { id: 1, name: "Nguyễn Văn A", score: 8.5, className: "D25CQCN01-B" },
-    { id: 2, name: "Trần Thị B", score: 4.5, className: "D25CQCN02-B" },
-    { id: 3, name: "Lê Văn C", score: 9.0, className: "D25CQCN01-B" },
-    { id: 4, name: "Phạm Thị D", score: 6.0, className: "D25CQCN03-B" }
+    { id: 1, name: "Nguyễn Văn A", score: 8.5, className: "D25CQCC01-B" },
+    { id: 2, name: "Trần Thị B", score: 4.5, className: "D25CQCC02-B" },
+    { id: 3, name: "Lê Văn C", score: 9.0, className: "D25CQCC01-B" },
+    { id: 4, name: "Phạm Thị D", score: 6.0, className: "D25CQCC03-B" }
   ];
 
   const [students, setStudents] = useState(initialStudents);
@@ -87,8 +87,10 @@ const App = () => {
 
     setErrorMsg('');
     
+    const nextId = students.length > 0 ? Math.max(...students.map(s => s.id)) + 1 : 1;
+
     const newStudent = {
-      id: Date.now(),
+      id: nextId, 
       name,
       score: numScore,
       className
